@@ -24,6 +24,12 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/boat/{data}',[AdminController::class,'hapusboat']);
     Route::post('/editboat',[AdminController::class,'editboat']);
     
+    
+    Route::post('/tambahtangkapan',[AdminController::class,'tambahtangkapan']);
+    Route::delete('/tangkapan/{id}',[AdminController::class,'hapustangkapan']);
+    
+    Route::post('/edittangkapan',[AdminController::class,'edittangkapan']);
+
     Route::post('/tambahdatanelayan',[AdminController::class,'tambahdatanelayan']);
     Route::delete('/nelayan/{id}',[AdminController::class,'hapusnelayan']);
     Route::post('/editnelayan/{id}',[AdminController::class,'editnelayan']);

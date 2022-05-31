@@ -64,13 +64,14 @@ class AdminController extends Controller
     public function index(){
         $tanggal = null;
         $hari = null;
-        $data = Nelayan::orderBy('created_at','desc')->paginate(10);
+        $data = Tangkapan::orderBy('created_at','desc')->paginate(10);
         $jumlah = count($data);
+        $boat = Boat::get();
         if($jumlah>0){
             $tanggal = $this->tgl_indo($data[0]->created_at->format('Y-m-d'));
             $hari = $this->hari($data[0]->created_at->format('D'));
         }
-        return view('beranda',['data'=>$data, 'jumlah'=>$jumlah,'tanggal'=>$tanggal,'hari'=>$hari]);
+        return view('beranda',['data'=>$data, 'jumlah'=>$jumlah,'tanggal'=>$tanggal,'hari'=>$hari, 'boat'=>$boat]);
     }
     public function datanelayan(){
         $tanggal = null;
@@ -198,11 +199,67 @@ class AdminController extends Controller
 
         }else{
             $boat = Boat::get();
-            // $boat= DB::table('boats')->where('id','=',$id)->first();
             $nelayan = Nelayan::findOrfail($id);
             return view('edit_nelayan',['nelayan'=>$nelayan,'boat'=>$boat]);
-            // dd($nelayan);
         }
-        
+    }
+    public function tambahtangkapan(Request $request){
+        $val = Validator::make(
+            $request->all(),
+            [
+                'id_boat' => 'required',
+                'tangkapan' => 'required',
+                'jumlah' => 'required',
+            ]
+        );
+        if($val){
+            $tangkapan = new Tangkapan;
+            $tangkapan->id_boat = $request->id_boat;
+            $tangkapan->jenis_ikan = $request->tangkapan;
+            $tangkapan->banyak = $request->jumlah;
+            $tangkapan->save();
+            if($tangkapan){
+                return redirect('/')->with('success', 'Data tangkapan berhasil ditambahkan');
+            }else{
+                return redirect('/')->with('failed', 'Terjadi kesalahan saat ditamah data tangkapan');
+            }
+        }else{
+            return redirect('/')->with('failed', 'Terjadi kesalahan saat ditamah data tangkapan');
+        }
+        // dd($request);
+    }
+    public function hapustangkapan($id){
+        $delete = DB::table('tangkapans')->where('id','=',$id)->delete();
+        if($delete){
+            return redirect('/')->with('success', 'Data tangkapan berhasil dihapus');
+        }else{
+            return redirect('/')->with('failed', 'Terjadi kesalahan saat menghapus data tangkapan');
+        }
+    }
+    public function edittangkapan(Request $request){
+        // dd(Tangkapan::findOrfail($request->$id));    
+        $val = Validator::make(
+            $request->all(),
+            [
+                'id' => 'required',
+                'id_boat' => 'required',
+                'tangkapan' => 'required',
+                'jumlah_ikan' => 'required',
+            ]
+        );
+        if($val){
+            $tangkapan = Tangkapan::findOrfail($request->id);
+            $tangkapan->id_boat = $request->id_boat;
+            $tangkapan->jenis_ikan = $request->tangkapan;
+            $tangkapan->banyak = $request->jumlah_ikan;
+            $tangkapan->update();
+            if($tangkapan){
+                return redirect('/')->with('success', 'Data tangkapan berhasil diupdate');
+            }else{
+                return redirect('/')->with('failed', 'Terjadi kesalahan saat update data tangkapan');
+            }
+        }else{
+            return redirect('/')->with('failed', 'Terjadi kesalahan saat update data tangkapan');
+        }
     }
 }

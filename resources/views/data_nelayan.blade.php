@@ -29,15 +29,15 @@
             </div>
             {{-- Message --}}
             @if (session()->has('success'))
-            <div class="flex justify-between mx-2 my-2 bg-green-600 text-white rounded-lg h-10 text-lg px-5">
-                <p class="my-auto">{{session()->get('success')}}</p>
-                <i class="my-auto hover:text-gray-600 fas fa-times alert-del"></i>
-            </div>
+                <div class="flex justify-between mx-2 my-2 bg-green-600 text-white rounded-lg h-10 text-lg px-5">
+                    <p class="my-auto">{{session()->get('success')}}</p>
+                    <i class="my-auto hover:text-gray-600 fas fa-times alert-del"></i>
+                </div>
             @elseif (session()->has('failed'))
-            <div class="flex justify-between mx-2 my-2 bg-red-500 text-white rounded-lg h-10 text-lg px-5">
-                <p class="my-auto">{{session()->get('failed')}}</p>
-                <i class="my-auto hover:text-gray-600 fas fa-times alert-del"></i>
-            </div>
+                <div class="flex justify-between mx-2 my-2 bg-red-500 text-white rounded-lg h-10 text-lg px-5">
+                    <p class="my-auto">{{session()->get('failed')}}</p>
+                    <i class="my-auto hover:text-gray-600 fas fa-times alert-del"></i>
+                </div>
             @endif
 
             <div class="my-5 pb-5 flex justify-center mx-auto">
@@ -128,7 +128,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
 
         <div class="w-full h-auto shadow-xl shadow-gray-400 mt-10 rounded-xl">
@@ -269,7 +268,8 @@
             </div>
         </div>
 
-        <div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-edit">
+        <div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" 
+        id="modal-edit">
             <div class="relative w-auto my-6 mx-auto max-w-3xl">
                 <!--content-->
                 <div
