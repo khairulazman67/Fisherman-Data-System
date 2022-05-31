@@ -20,6 +20,9 @@ use App\Http\Controllers\AdminController;
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [AdminController::class, 'index'])->middleware(['auth'])->name('beranda');
     Route::get('/datanelayan', [AdminController::class, 'datanelayan']);
+    Route::get('/laporan',[AdminController::class,'laporan']);
+
+    
     Route::post('/tambahboat',[AdminController::class,'tambahboat']);
     Route::delete('/boat/{data}',[AdminController::class,'hapusboat']);
     Route::post('/editboat',[AdminController::class,'editboat']);
@@ -33,6 +36,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/tambahdatanelayan',[AdminController::class,'tambahdatanelayan']);
     Route::delete('/nelayan/{id}',[AdminController::class,'hapusnelayan']);
     Route::post('/editnelayan/{id}',[AdminController::class,'editnelayan']);
+
+    
 });
 // Route::get('/', [AdminController::class, 'index'])->middleware(['auth'])->name('beranda');
 // Route::get('/', [AdminController::class, 'index'])->middleware(['auth'])->name('beranda');

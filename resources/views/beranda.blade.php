@@ -29,7 +29,7 @@
                 <div class="w-auto h-[3px] bg-white rounded-xl mt-2"></div>
                 <div class="text-white text-2xl mt-2">
                     <i class="fa-solid fa-fish-fins"></i>
-                    <p class="inline font-semibold">{{$jumlah}} Kg</p>
+                    <p class="inline font-semibold">{{$jumlahtangkapan}} Kg</p>
                 </div>
             </div>
 
@@ -38,7 +38,7 @@
                 <div class="w-auto h-[3px] bg-white rounded-xl mt-2"></div>
                 <div class="text-white text-2xl mt-2">
                     <i class="fa-solid fa-ship"></i>
-                    <p class="inline font-semibold">{{$jumlah}} Unit</p>
+                    <p class="inline font-semibold">{{$jumlahboat}} Unit</p>
                 </div>
             </div>
             <div class="bg-primary-900 w-full rounded-xl shadow-lg shadow-gray-400 py-10 px-7 ">
@@ -46,7 +46,7 @@
                 <div class="w-auto h-[3px] bg-white rounded-xl mt-2"></div>
                 <div class="text-white text-2xl mt-2">
                     <i class="fa-solid fa-users inline"></i>
-                    <p class="inline font-semibold">{{$jumlah}}</p>
+                    <p class="inline font-semibold">{{$jumlahnelayan}}</p>
                 </div>
             </div>
             <div class="bg-primary-800 w-full rounded-xl shadow-lg shadow-gray-400 py-10 px-7 text-lg ">
@@ -77,7 +77,7 @@
                     <i class="my-auto hover:text-gray-600 fas fa-times alert-del"></i>
                 </div>
             @endif
-
+            
             <div class="my-5 pb-5 flex flex-col justify-center">
                 <div class="flex justify-center">
                     <form action="{{url('tambahtangkapan')}}" method="post" class="w-full max-w-2xl">
@@ -91,7 +91,8 @@
                                 <div class="relative">
                                     <select name="id_boat"
                                         class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                        id="grid-state">
+                                        id="grid-state" required>
+                                        <option value="">Pilih Boat</option>
                                         @foreach ($boat as $i=>$dat)
                                             <option value="{{$dat->id}}">{{$dat->nama}}</option>
                                         @endforeach
@@ -106,7 +107,7 @@
                                 </label>
                                 <input type="text" name="tangkapan"
                                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                    id="grid-city" type="text" placeholder="Ikan Tongkol">
+                                    id="grid-city" type="text" placeholder="Ikan Tongkol" required> 
                             </div>
                             
                             <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
@@ -116,11 +117,12 @@
                                 </label>
                                 <input type="number" name="jumlah"
                                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                    id="grid-zip" type="text" placeholder="100 Kg">
+                                    id="grid-zip" type="text" placeholder="100 Kg" required>
                             </div>
                             <div class="w-full md:w-1/3 px-3 mt-6">
                                 <button   type="submit"
-                                    class="bg-emerald-500 text-white hover:bg-emerald-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-3 text-center ">
+                                    class="bg-emerald-500 text-white hover:bg-emerald-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-3 text-center "
+                                    >
                                     Simpan Data
                                 </button>
                             </div>

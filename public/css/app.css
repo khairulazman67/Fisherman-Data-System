@@ -10903,9 +10903,6 @@ select {
     max-width: 1536px;
   }
 }
-.pointer-events-none {
-  pointer-events: none;
-}
 .fixed {
   position: fixed;
 }
@@ -10940,11 +10937,11 @@ select {
 .right-3 {
   right: 0.75rem;
 }
-.left-0 {
-  left: 0px;
-}
 .-right-2 {
   right: -0.5rem;
+}
+.left-0 {
+  left: 0px;
 }
 .z-0 {
   z-index: 0;
@@ -10996,14 +10993,6 @@ select {
 .my-10 {
   margin-top: 2.5rem;
   margin-bottom: 2.5rem;
-}
-.-mx-3 {
-  margin-left: -0.75rem;
-  margin-right: -0.75rem;
-}
-.-mx-1 {
-  margin-left: -0.25rem;
-  margin-right: -0.25rem;
 }
 .-mx-4 {
   margin-left: -1rem;
@@ -11096,20 +11085,11 @@ select {
 .mt-3 {
   margin-top: 0.75rem;
 }
-.mt-1 {
-  margin-top: 0.25rem;
-}
 .ml-20 {
   margin-left: 5rem;
 }
-.mb-3 {
-  margin-bottom: 0.75rem;
-}
-.mb-0 {
-  margin-bottom: 0px;
-}
-.mt-7 {
-  margin-top: 1.75rem;
+.mt-1 {
+  margin-top: 0.25rem;
 }
 .block {
   display: block;
@@ -11204,9 +11184,6 @@ select {
 .w-20 {
   width: 5rem;
 }
-.w-64 {
-  width: 16rem;
-}
 .max-w-3xl {
   max-width: 48rem;
 }
@@ -11218,9 +11195,6 @@ select {
 }
 .max-w-7xl {
   max-width: 80rem;
-}
-.max-w-lg {
-  max-width: 32rem;
 }
 .max-w-2xl {
   max-width: 42rem;
@@ -11296,9 +11270,6 @@ select {
 }
 .flex-col {
   flex-direction: column;
-}
-.flex-wrap {
-  flex-wrap: wrap;
 }
 .items-start {
   align-items: flex-start;
@@ -11441,10 +11412,6 @@ select {
 .border-gray-100 {
   --tw-border-opacity: 1;
   border-color: rgb(243 244 246 / var(--tw-border-opacity));
-}
-.border-red-500 {
-  --tw-border-opacity: 1;
-  border-color: rgb(239 68 68 / var(--tw-border-opacity));
 }
 .bg-white {
   --tw-bg-opacity: 1;
@@ -11661,17 +11628,11 @@ select {
 .pb-1 {
   padding-bottom: 0.25rem;
 }
-.pb-10 {
-  padding-bottom: 2.5rem;
-}
-.pb-7 {
-  padding-bottom: 1.75rem;
-}
 .pr-8 {
   padding-right: 2rem;
 }
-.pb-0 {
-  padding-bottom: 0px;
+.pb-7 {
+  padding-bottom: 1.75rem;
 }
 .text-center {
   text-align: center;
@@ -11725,9 +11686,6 @@ select {
 }
 .uppercase {
   text-transform: uppercase;
-}
-.italic {
-  font-style: italic;
 }
 .leading-5 {
   line-height: 1.25rem;
@@ -12234,10 +12192,6 @@ select {
 
   .md\:mb-0 {
     margin-bottom: 0px;
-  }
-
-  .md\:w-1\/2 {
-    width: 50%;
   }
 
   .md\:w-1\/3 {

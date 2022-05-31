@@ -22,7 +22,7 @@
                 </div>
                 <div class="px-[2px] rounded-lg bg-white inline"></div>
                 <div class="bg-primary-700 hover:bg-primary-600 py-2 px-3 inline rounded-lg">
-                    <a href="{{ url('kaprodi/pelaporan') }}">Pelaporan</a>
+                    <a href="{{ url('/laporan') }}">Pelaporan</a>
                 </div>
             </div>
             <div class="absolute right-3 flex flex-row ">

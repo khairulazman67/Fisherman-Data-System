@@ -28,14 +28,14 @@
                 <h1 class="font-bold text-white text-xl">Data Boat </h1>
             </div>
             {{-- Message --}}
-            @if (session()->has('success'))
+            @if (session()->has('successb'))
                 <div class="flex justify-between mx-2 my-2 bg-green-600 text-white rounded-lg h-10 text-lg px-5">
-                    <p class="my-auto">{{session()->get('success')}}</p>
+                    <p class="my-auto">{{session()->get('successb')}}</p>
                     <i class="my-auto hover:text-gray-600 fas fa-times alert-del"></i>
                 </div>
-            @elseif (session()->has('failed'))
+            @elseif (session()->has('failedb'))
                 <div class="flex justify-between mx-2 my-2 bg-red-500 text-white rounded-lg h-10 text-lg px-5">
-                    <p class="my-auto">{{session()->get('failed')}}</p>
+                    <p class="my-auto">{{session()->get('failedb')}}</p>
                     <i class="my-auto hover:text-gray-600 fas fa-times alert-del"></i>
                 </div>
             @endif
@@ -157,7 +157,7 @@
                             @csrf
                             <div class="relative z-0 w-full mb-6 group">
                                 <input type="text" name="nama_nelayan"
-                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-primary-900 peer"
+                                    class="@error('title') is-invalid @enderror block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-primary-900 peer"
                                     placeholder=" " required />
                                 <label
                                     class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0  peer-focus:text-primary-800 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
@@ -184,12 +184,19 @@
                                 <label for="countries" class="block mb-2 text-sm  text-gray-500 ">
                                     Kapal
                                 </label>
-                                <select name="id_boat" id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                                    <option value="null" selected>Pilih Boat</option>
+                                <select name="id_boat" id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                required
+                                >
+                                    <option value="" selected>Pilih Boat</option>
                                     @foreach ($boat as $i=>$dat)
                                         <option value="{{$dat->id}}">{{$dat->nama}}</option>
                                     @endforeach
                                 </select>
+                                @error('id_boat')
+                                    <span class="text-red my-10" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <button type="submit"
                                 class="bg-emerald-500 text-white hover:bg-emerald-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
