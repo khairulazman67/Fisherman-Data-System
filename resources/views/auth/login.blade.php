@@ -10,7 +10,7 @@
 <body class="bg-blue-50">
     <div class="container mx-auto">
         <!-- tulisan atas -->
-        <div class="mt-20">
+        <div class="mt-16">
             <div class="flex justify-center text-secondary-900 font-bold text-4xl bg-primary-800 rounded-3xl mx-28 mb-10 py-4">
                 SISTEM PENDATAAN NELAYAN
             </div>
