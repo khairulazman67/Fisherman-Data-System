@@ -296,7 +296,7 @@
                     </div>
                     <!--body-->
                     <form action="/editboat" method="post">
-                        <div class="relative p-6 flex-auto">
+                        <div class="relative  p-6 flex-auto">
 
                             @csrf
                             <input type="hidden" name="id" id="id" value="id">
@@ -316,7 +316,6 @@
                                     class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0  peer-focus:text-primary-800 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nama
                                     Pemilik</label>
                             </div>
-
                         </div>
                         <!--footer-->
                         <div class="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">

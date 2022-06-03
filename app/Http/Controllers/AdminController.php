@@ -119,12 +119,20 @@ class AdminController extends Controller
         }
     }
     public function hapusboat($data){
-        $delete = DB::table('boats')->where('id','=',$data)->delete();
-        if($delete){
-            return redirect('/datanelayan')->with('successb', 'Data boat berhasil dihapus');
+        $cekdatanelayan = Nelayan::where('id_boat',$data)->first();
+        $cekdatatangkapan = Tangkapan::where('id_boat',$data)->first();
+        if($cekdatanelayan!=null ||  $cekdatatangkapan!=null){
+            return redirect('/datanelayan')->with('failedb', 'Terdapat nelayan dan tangkapan yang terdaftar pada boat ini');
+            
         }else{
-            return redirect('/datanelayan')->with('failedb', 'Terjadi kesalahan saat menghapus data boat');
+            $delete = DB::table('boats')->where('id','=',$data)->delete();
+            if($delete){
+                return redirect('/datanelayan')->with('successb', 'Data boat berhasil dihapus');
+            }else{
+                return redirect('/datanelayan')->with('failedb', 'Terjadi kesalahan saat menghapus data boat');
+            }
         }
+        
     }
     public function editboat(Request $request){
         $request->validate(
