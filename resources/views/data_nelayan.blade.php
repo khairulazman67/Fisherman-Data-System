@@ -3,15 +3,12 @@
 @section('content')
 
 <body>
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.js"
-        integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.5/datatables.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('#myTable').DataTable();
-        });
-
-    </script>
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+    {{-- <script src="https://code.jquery.com/jquery-3.6.0.slim.js"
+        integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.5/datatables.min.js"></script> --}}
     <div class="container mx-auto mb-10">
         <!-- tulisan atas -->
         <div class="w-full  relative">
@@ -22,6 +19,7 @@
             </div>
             <div class="bg-primary-700 h-2 "></div>
         </div>
+
         <!-- table -->
         <div class="w-full h-auto shadow-xl shadow-gray-400 mt-5 rounded-xl">
             <div class="bg-secondary-900 rounded-t-xl px-10 py-3">
@@ -69,9 +67,10 @@
                                 Simpan Data</button>
                         </form>
                     </div>
+
                     <div>
                         <div class="border-b border-gray-200 shadow ">
-                            <table class="divide-y divide-gray-300 ">
+                            <table id="" class="display" style="width:100%">
                                 <thead class="bg-gray-900 text-white rounded-xl">
                                     <tr>
                                         <th class="px-6 py-2 text-lg ">
@@ -105,7 +104,7 @@
                                             <button
                                                 class="px-6 py-1 text-sm text-white bg-yellow-400 hover:bg-yellow-500 rounded-lg"
                                                 type="button" onclick="toggleModal('modal-edit')" id="edit"
-                                                data-target="#modal-edit" data-whatever="@mdo" 
+                                                data-target="#modal-edit" data-whatever="@mdo"
                                                 data-id="{{$dat->id}}"
                                                 data-nama_kapal="{{$dat->nama}}" data-nama_pemilik="{{$dat->pemilik}}">
                                                 Edit
@@ -123,7 +122,6 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            {{ $data->links('pagination::tailwind') }}
                         </div>
                     </div>
                 </div>
@@ -178,7 +176,7 @@
                                 <label for="floating_last_name"
                                     class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary-800  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                                     No HP</label>
-                                
+
                             </div>
                             <div class="relative z-0 w-full mb-6 group">
                                 <label for="countries" class="block mb-2 text-sm  text-gray-500 ">
@@ -206,7 +204,7 @@
                     </div>
                     <div>
                         <div class="border-b border-gray-200 shadow ">
-                            <table class="divide-y divide-gray-300 ">
+                            <table id="" class="display divide-y divide-gray-300 ">
                                 <thead class="bg-gray-900 text-white rounded-xl">
                                     <tr>
                                         <th class="px-4 py-2 ">
@@ -254,7 +252,7 @@
                                                     <button
                                                         class="px-6 py-1 text-sm text-white bg-yellow-400 hover:bg-yellow-500 rounded-lg">Edit</button>
                                                 </form>
-                                                
+
                                                 {{-- </form> --}}
                                                 <form action="{{url('nelayan/'.$dat->id)}}" method="post"
                                                     onsubmit="return confirm('Apakah anda ingin melanjutkan penghapusan data?')">
@@ -275,7 +273,7 @@
             </div>
         </div>
 
-        <div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" 
+        <div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center"
         id="modal-edit">
             <div class="relative w-auto my-6 mx-auto max-w-3xl">
                 <!--content-->
@@ -337,6 +335,9 @@
 
         <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-edit-backdrop"></div>
         <script type="text/javascript">
+            $(document).ready(function () {
+                $('table.display').DataTable();
+            });
             function toggleModal(modalID) {
                 document.getElementById(modalID).classList.toggle("hidden");
                 document.getElementById(modalID + "-backdrop").classList.toggle("hidden");
@@ -355,7 +356,7 @@
                 var id = null;
                 var nama_pemilik = null;
                 var nama_kapal = null;
-                
+
                 $(document).on('click', '#edit', function () {
                     this.id = $(this).data('id');
                     this.nama_kapal = $(this).data('nama_kapal');
@@ -367,6 +368,8 @@
                     $('#nama_pemilik').val(this.nama_pemilik);
                 })
             });
+
+
             // var modaledit = document.getElementById('editData');
 
         </script>
